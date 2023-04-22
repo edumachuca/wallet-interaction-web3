@@ -1,13 +1,14 @@
-import { useAccount, useEnsName } from 'wagmi'
+import { Text, VStack } from "@chakra-ui/react";
+import { useAccount, useEnsName } from "wagmi";
 
 export function Account() {
-  const { address } = useAccount()
-  const { data: ensName } = useEnsName({ address })
+  const { address } = useAccount();
+  const { data: ensName } = useEnsName({ address });
 
   return (
-    <div>
-      {ensName ?? address}
-      {ensName ? ` (${address})` : null}
-    </div>
-  )
+    <VStack mt={10}>
+      <Text fontSize="xl">Account: {ensName ?? address}</Text>
+      <Text>{ensName ? ` (${address})` : null}</Text>
+    </VStack>
+  );
 }
